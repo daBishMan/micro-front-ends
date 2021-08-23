@@ -1,3 +1,4 @@
+import { RemoteEntryModule } from './remote-entry/entry.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -7,6 +8,7 @@ import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    // RemoteEntryModule,
     BrowserModule,
     RouterModule.forRoot([], { initialNavigation: 'enabledBlocking' }),
   ],
