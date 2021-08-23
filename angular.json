@@ -134,7 +134,7 @@
       "prefix": "micro-front-ends",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@nrwl/angular:webpack-browser",
           "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/dashboard",
@@ -148,7 +148,10 @@
               "apps/dashboard/src/assets"
             ],
             "styles": ["apps/dashboard/src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "customWebpackConfig": {
+              "path": "apps/dashboard/webpack.config.js"
+            }
           },
           "configurations": {
             "production": {
@@ -170,7 +173,10 @@
                   "with": "apps/dashboard/src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "customWebpackConfig": {
+                "path": "apps/dashboard/webpack.prod.config.js"
+              }
             },
             "development": {
               "buildOptimizer": false,
@@ -184,7 +190,7 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "@nrwl/angular:webpack-server",
           "configurations": {
             "production": {
               "browserTarget": "dashboard:build:production"
@@ -193,7 +199,10 @@
               "browserTarget": "dashboard:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "port": 4000
+          }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",

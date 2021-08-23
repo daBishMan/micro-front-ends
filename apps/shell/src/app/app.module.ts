@@ -14,6 +14,10 @@ import { AppComponent } from './app.component';
           loadChildren: () =>
             import('admin/Module').then((m) => m.RemoteEntryModule),
         },
+        {
+          path: 'dashboard',
+          loadChildren: () => import('dashboard/Module').then(m => m.RemoteEntryModule)
+        }
       ],
       { initialNavigation: 'enabledBlocking' }
     ),
